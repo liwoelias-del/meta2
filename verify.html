@@ -1,255 +1,738 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<title>Powered by Netlify</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1877F2">
+  <title>Meta Verified for Business — Demo Page</title>
+  <meta name="description" content="Learn about business verification, identity protection, support and business tools.">
+  <style>
+    :root {
+      --blue: #1877f2;
+      --blue-dark: #0866ff;
+      --text: #1c2b33;
+      --muted: #606770;
+      --border: #e5e7eb;
+      --soft: #f5f8fc;
+      --footer: #17212b;
+      --radius: 16px;
+    }
 
-<style>
-*{box-sizing:border-box}
-html,body{
-  margin:0;
-  padding:0;
-  background:transparent;
-  font-family:-apple-system,BlinkMacSystemFont,
-  "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  color:#f4f9f9;
-}
-.nl-wrap{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  gap:10px;
-  z-index:9999;
-}
-button{font-family:inherit;cursor:pointer}
-.nl-icon-btn{
-  width:30px;height:30px;
-  display:flex;align-items:center;
-  justify-content:center;
-  border-radius:8px;
-  background:transparent;
-  color:#d5e3e6;
-  border:0;
-}
-.nl-card{
-  display:none;
-  width:min(340px,calc(100vw - 26px));
-  background:linear-gradient(180deg,#132832,#0e1e25);
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;
-  padding:18px;
-  animation:nl-rise .3s ease both;
-}
-.nl-card.open{display:block}
-.nl-card-close{
-  float:right;
-}
-.nl-card h2{
-  margin:0;
-  padding-right:25px;
-  font-size:16px;
-  font-weight:750;
-}
-.nl-card h2 em{
-  font-style:normal;
-  background:linear-gradient(90deg,#32e6e2,#4d7cfe,#9a6bff);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.nl-card p{
-  margin:8px 0 0;
-  font-size:12.5px;
-  color:#d5e3e6;
-}
-.nl-prompt{
-  position:relative;
-  margin-top:14px;
-  background:#10222b;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:14px;
-  padding:10px 12px;
-}
-.nl-prompt textarea{
-  width:100%;
-  height:42px;
-  resize:none;
-  border:0;
-  outline:none;
-  background:transparent;
-  color:white;
-  font:inherit;
-  font-size:13px;
-}
-.nl-send{
-  position:absolute;
-  right:9px;
-  bottom:9px;
-  width:24px;
-  height:24px;
-  border:0;
-  border-radius:50%;
-  background:#05bdba;
-  color:#02191b;
-}
-.nl-or{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:12px 0;
-  font-size:10px;
-  text-transform:uppercase;
-  color:#a9bdc2;
-}
-.nl-or:before,.nl-or:after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:rgba(255,255,255,.09);
-}
-.nl-drop{
-  display:flex;
-  justify-content:space-between;
-  text-decoration:none;
-  background:#1b3a45;
-  border-radius:10px;
-  padding:10px 12px;
-  color:#cfe0e3;
-  font-size:13px;
-}
-.nl-badge{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  white-space:nowrap;
-  border:1px solid rgba(255,255,255,.09);
-  background:linear-gradient(180deg,#142b34,#0e1e25);
-  color:white;
-  border-radius:999px;
-  padding:9px 14px 9px 11px;
-  font-size:13px;
-  font-weight:600;
-}
-.nl-badge-label{color:#d5e3e6}
-.nl-badge-brand{font-weight:750}
-@keyframes nl-rise{
-  from{opacity:0;transform:translateY(10px) scale(.97)}
-  to{opacity:1;transform:none}
-}
-@media(max-width:480px){
-  .nl-wrap{right:12px;bottom:12px}
-}
-</style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+    img, video { max-width: 100%; }
+    img { display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .header-inner {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand img { width: 112px; height: auto; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav a:hover { color: var(--blue); }
+    .language {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 7px 12px;
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    /* General sections */
+    section { scroll-margin-top: 85px; }
+    .section { padding: 84px 0; }
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .section-heading h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .eyebrow {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 76px 0 88px;
+      background: linear-gradient(180deg, #f4f8ff 0%, #fff 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      align-items: center;
+      gap: 64px;
+    }
+    .hero-badge { width: 64px; margin-bottom: 24px; }
+    .hero h1 {
+      font-size: clamp(34px, 4.5vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -1.8px;
+      margin: 0;
+    }
+    .hero-copy {
+      margin: 22px 0 26px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 26px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      transition: background .2s, transform .2s;
+    }
+    .button:hover {
+      background: #0866d9;
+      transform: translateY(-1px);
+    }
+    .hero .button { min-width: 220px; }
+    .reference {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hero-note {
+      max-width: 450px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .hero-media {
+      overflow: hidden;
+      border-radius: 20px;
+      background: #eaf1fa;
+      box-shadow: 0 20px 60px rgba(20,50,90,.12);
+    }
+    .hero-media img,
+    .hero-media video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    /* Benefits */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 48px;
+    }
+    .benefit-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.06);
+    }
+    .benefit-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #eaf2ff;
+      color: var(--blue);
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+    .benefit-card h3 { margin: 0 0 10px; font-size: 19px; }
+    .benefit-card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Steps */
+    .steps-section { background: var(--soft); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 46px;
+    }
+    .step-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    .step-image {
+      display: grid;
+      place-items: center;
+      min-height: 180px;
+      padding: 24px;
+      background: #edf4ff;
+    }
+    .step-image img {
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+    }
+    .step-body { padding: 24px; }
+    .step-body h3 { margin: 0 0 10px; font-size: 19px; }
+    .step-body p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Testimonials */
+    .testimonial-section { background: #f7f9fc; }
+    .testimonial {
+      max-width: 720px;
+      margin: 42px auto 0;
+      padding: 38px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      text-align: center;
+    }
+    .quote {
+      font-size: clamp(18px, 2.5vw, 24px);
+      line-height: 1.6;
+    }
+    .quote-author { margin-top: 24px; font-weight: 700; }
+    .quote-role { color: var(--muted); font-size: 13px; }
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .circle-button {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: #fff;
+      color: var(--blue);
+    }
+    .dots { display: flex; gap: 8px; }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      border-radius: 20px;
+      background: #cbd5e1;
+      padding: 0;
+    }
+    .dot.active { width: 24px; background: var(--blue); }
+
+    /* Call to action */
+    .cta-section {
+      padding: 72px 0;
+      background: #edf4ff;
+      text-align: center;
+    }
+    .cta-section h2 {
+      max-width: 700px;
+      margin: 0 auto 14px;
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.2;
+    }
+    .cta-section p {
+      max-width: 620px;
+      margin: 0 auto 26px;
+      color: var(--muted);
+    }
+
+    /* FAQ */
+    .faq-list {
+      margin-top: 38px;
+      border-top: 1px solid var(--border);
+    }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      padding: 22px 0;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      font-weight: 700;
+    }
+    .faq-symbol {
+      color: var(--blue);
+      font-size: 24px;
+      transition: transform .2s;
+    }
+    .faq-answer {
+      padding: 0 32px 22px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .faq-answer[hidden] { display: none; }
+
+    /* Footer */
+    .footer {
+      padding: 56px 0 24px;
+      background: var(--footer);
+      color: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 36px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .footer h3 { margin: 0 0 16px; font-size: 14px; }
+    .footer ul { list-style: none; padding: 0; margin: 0; }
+    .footer li { margin: 10px 0; color: #cbd5e1; font-size: 13px; }
+    .footer a:hover { color: #fff; text-decoration: underline; }
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .socials a {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      font-size: 13px;
+    }
+    .copyright {
+      margin: 0;
+      color: #aeb9c5;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    @media (max-width: 850px) {
+      .nav { gap: 16px; }
+      .hero-grid { gap: 32px; }
+      .benefits-grid, .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 32px, 1160px); }
+      .header-inner { min-height: 60px; }
+      .brand img { width: 96px; }
+      .nav { display: none; }
+      .section { padding: 60px 0; }
+      .hero { padding: 48px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-copy { font-size: 15px; }
+      .hero .button { width: 100%; }
+      .benefits-grid, .steps-grid { grid-template-columns: 1fr; }
+      .benefit-card { padding: 24px; }
+      .testimonial { padding: 26px 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
 </head>
-
 <body>
-<div class="nl-wrap">
+  <header class="header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Home">
+        <img src="/images/meta/logo-meta.svg" alt="Site logo">
+      </a>
 
-<section class="nl-card" id="nl-card">
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#benefits">Benefits</a>
+        <a href="#steps">Steps</a>
+        <a href="#testimonials">Stories</a>
+        <a href="#faq">FAQ</a>
+      </nav>
 
-<button class="nl-icon-btn nl-card-close"
-id="nl-card-close" aria-label="Close">
-<svg width="14" height="14" viewBox="0 0 16 16"
-fill="none" stroke="currentColor" stroke-width="1.9">
-<path d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"/>
-</svg>
-</button>
+      <button class="language" type="button" aria-label="Language selector">
+        ◎ English (US)
+      </button>
+    </div>
+  </header>
 
-<h2><em>Build your own site with Netlify</em></h2>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <img class="hero-badge" src="/images/icons/ic_blue.svg" alt="Verification badge">
+          <p class="eyebrow">Business tools and identity</p>
+          <h1>Discover verification tools for your business.</h1>
+          <p class="hero-copy">
+            Learn how business verification, identity protection and support
+            tools can help customers recognize your official brand presence.
+          </p>
+          <a class="button" href="#benefits">Explore benefits</a>
+          <p class="reference">Information page · Business resources</p>
+          <p class="hero-note">
+            This is an independently reconstructed demonstration page.
+            It does not verify account eligibility or represent an official
+            account activation process.
+          </p>
+        </div>
 
-<p>Describe what you want, and an AI agent designs, builds and deploys it in minutes.</p>
+        <div class="hero-media">
+          <img src="/images/meta/header.png"
+               alt="Business verification information"
+               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:60px 24px;text-align:center;color:#52657a&quot;>Business verification overview</div>';">
+        </div>
+      </div>
+    </section>
 
-<form class="nl-prompt"
-action="https://app.netlify.com/start"
-method="get"
-target="_blank">
+    <section id="benefits" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Business benefits</p>
+          <h2>Explore tools designed for businesses</h2>
+          <p>Learn about identity, customer trust and support features.</p>
+        </div>
 
-<textarea name="prompt" rows="2"
-required maxlength="300"
-placeholder="A shop for my handmade surfboards…"
-aria-label="Describe the site you want to build"></textarea>
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">✓</div>
+            <h3>Verified identity</h3>
+            <p>Understand how verification badges can help customers identify an official business presence.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">◈</div>
+            <h3>Identity protection</h3>
+            <p>Learn about tools intended to help identify impersonation and confusing account activity.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">?</div>
+            <h3>Customer support</h3>
+            <p>Explore available help resources for business accounts and account-related questions.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">★</div>
+            <h3>Brand credibility</h3>
+            <p>Present clear and consistent business information across your online presence.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">▦</div>
+            <h3>Business tools</h3>
+            <p>Learn about account management tools available to businesses on supported platforms.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon" aria-hidden="true">↗</div>
+            <h3>Customer connections</h3>
+            <p>Build customer relationships through accurate information and useful business resources.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<button type="submit" class="nl-send" aria-label="Build this site">
-<svg width="13" height="13" viewBox="0 0 16 16"
-fill="none" stroke="currentColor" stroke-width="1.8">
-<path d="M8 12.75v-9.5M3.9 7.35 8 3.25l4.1 4.1"/>
-</svg>
-</button>
+    <section id="steps" class="section steps-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">How it works</p>
+          <h2>Understand the process</h2>
+          <p>Review the information and use the official service when you need to manage your account.</p>
+        </div>
 
-<input type="hidden" name="utm_source" value="netlify_badge">
-<input type="hidden" name="utm_campaign" value="loops">
-<input type="hidden" name="utm_medium" value="owned">
-<input type="hidden" name="utm_content" value="prompt">
-<input type="hidden" name="utm_id"
-value="f3ca3ad1-5140-497e-a063-1418eb639fd8">
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-image">
+              <img src="/images/meta/one.png" alt="Step one illustration"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="step-body">
+              <h3>1. Review the information</h3>
+              <p>Read the available requirements and understand which services apply to your business.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-image">
+              <img src="/images/meta/two.png" alt="Step two illustration"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="step-body">
+              <h3>2. Check your business details</h3>
+              <p>Make sure your business information is accurate and up to date before using an official service.</p>
+            </div>
+          </article>
+          <article class="step-card">
+            <div class="step-image">
+              <img src="/images/meta/three.png" alt="Step three illustration"
+                   onerror="this.style.display='none'">
+            </div>
+            <div class="step-body">
+              <h3>3. Follow official guidance</h3>
+              <p>Use the official platform to review account status, available features and any next steps.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</form>
+    <section id="testimonials" class="section testimonial-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Business stories</h2>
+          <p>Examples of how businesses think about trust and customer experience.</p>
+        </div>
 
-<div class="nl-or"><span>or</span></div>
+        <div class="testimonial">
+          <p class="quote" id="quoteText">
+            “Clear business information helps customers understand who they are interacting with.”
+          </p>
+          <p class="quote-author" id="quoteAuthor">Business owner</p>
+          <p class="quote-role" id="quoteRole">Illustrative example</p>
+        </div>
 
-<a class="nl-drop"
-href="https://app.netlify.com/drop?utm_source=netlify_badge&utm_campaign=loops&utm_medium=owned&utm_content=drop&utm_id=f3ca3ad1-5140-497e-a063-1418eb639fd8"
-target="_blank" rel="noopener">
-<span>Drop a site you already have</span>
-<span>→</span>
-</a>
+        <div class="carousel-controls" aria-label="Story controls">
+          <button class="circle-button" id="prevStory" type="button" aria-label="Previous story">←</button>
+          <div class="dots" id="storyDots" aria-label="Story pagination"></div>
+          <button class="circle-button" id="nextStory" type="button" aria-label="Next story">→</button>
+        </div>
+      </div>
+    </section>
 
-</section>
+    <section class="cta-section">
+      <div class="container">
+        <h2>Manage your business information</h2>
+        <p>Review your account using official platform resources and keep your business details up to date.</p>
+        <a class="button" href="https://www.facebook.com/business/tools"
+           target="_blank" rel="noopener noreferrer">Explore business tools</a>
+      </div>
+    </section>
 
-<button class="nl-badge" id="nl-badge"
-aria-expanded="false" aria-controls="nl-card">
+    <section id="faq" class="section">
+      <div class="container" style="max-width:800px">
+        <div class="section-heading">
+          <h2>Frequently asked questions</h2>
+          <p>General information about verification and business accounts.</p>
+        </div>
 
-<svg width="18" height="18" viewBox="0 0 32 32"
-fill="none" aria-hidden="true">
-<path fill="#fff" d="M17.9922 18.3225H14.005L13.6746 17.9921V14.005L14.005 13.6746H17.9922L18.3226 14.005V17.9921L17.9922 18.3225Z"/>
-<g fill="#05BDBA">
-<path d="M9.6958 24.3311H9.35705L7.6661 22.6401V22.3041L10.2511 19.7164L12.042 19.7191L12.2808 19.9552V21.7461L9.6958 24.3311Z"/>
-<path d="M7.6661 9.69576V9.35701L9.35705 7.66606H9.6958L12.2808 10.2511V12.0392L12.042 12.2808H10.2511L7.6661 9.69576Z"/>
-<path d="M10.0457 17.4369H0.205466L0 17.2314V14.7658L0.205466 14.5603H10.0457L10.2511 14.7658V17.2314L10.0457 17.4369Z"/>
-<path d="M31.7945 17.4369H21.9544L21.7489 17.2314V14.7658L21.9544 14.5603H31.7945L32 14.7658V17.2314L31.7945 17.4369Z"/>
-<path d="M14.5631 10.0456V2.66547L14.7686 2.46001H17.2343L17.4396 2.66547V10.0456L17.2343 10.2511H14.7686L14.5631 10.0456Z"/>
-<path d="M14.5631 29.3316V21.9515L14.7686 21.746H17.2343L17.4396 21.9515V29.3316L17.2343 29.5371H14.7686L14.5631 29.3316Z"/>
-</g>
-</svg>
+        <div class="faq-list">
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>What is business verification?</span>
+              <span class="faq-symbol" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Business verification refers to processes used by a service to confirm
+              information about a business or its authorized representative.
+              Available features and requirements can vary.
+            </div>
+          </article>
 
-<span>
-<span class="nl-badge-label">Powered by</span>
-<span class="nl-badge-brand">Netlify</span>
-</span>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Is verification always free?</span>
+              <span class="faq-symbol" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Pricing depends on the product, region and subscription selected.
+              Check the official service for current pricing and eligibility.
+            </div>
+          </article>
 
-</button>
-</div>
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Who can use business verification features?</span>
+              <span class="faq-symbol" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Requirements may include account history, business information,
+              identity checks and compliance with the service's policies.
+            </div>
+          </article>
 
-<script>
-const badge = document.getElementById("nl-badge");
-const card = document.getElementById("nl-card");
-const closeBtn = document.getElementById("nl-card-close");
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How long does a review take?</span>
+              <span class="faq-symbol" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Review times vary. Consult the official service for current estimates
+              and status updates.
+            </div>
+          </article>
 
-function setOpen(open){
-  card.classList.toggle("open",open);
-  badge.setAttribute("aria-expanded",String(open));
-}
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How can I protect my account?</span>
+              <span class="faq-symbol" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" hidden>
+              Use a unique password, enable two-factor authentication, check the
+              website address before signing in and never share verification codes.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-badge.addEventListener("click",()=>{
-  setOpen(!card.classList.contains("open"));
-});
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Platforms</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li><a href="https://www.whatsapp.com/">WhatsApp</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Business resources</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/business/">Business resources</a></li>
+            <li><a href="https://www.facebook.com/business/tools">Business tools</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Support</h3>
+          <ul>
+            <li><a href="https://www.facebook.com/help/">Help Center</a></li>
+            <li><a href="https://www.facebook.com/business/help">Business Help Center</a></li>
+          </ul>
+        </div>
+      </div>
 
-closeBtn.addEventListener("click",()=>{
-  setOpen(false);
-  badge.focus();
-});
+      <div class="socials" aria-label="Social links">
+        <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+        <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
+        <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+      </div>
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    setOpen(false);
-  }
-});
-</script>
+      <p class="copyright">
+        © <span id="currentYear"></span> · Independent demonstration page.
+        Not an official account activation or verification service.
+      </p>
+    </div>
+  </footer>
 
+  <script>
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(function (button) {
+      button.addEventListener("click", function () {
+        const answer = button.nextElementSibling;
+        const expanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!expanded));
+        answer.hidden = expanded;
+
+        const symbol = button.querySelector(".faq-symbol");
+        symbol.textContent = expanded ? "+" : "−";
+      });
+    });
+
+    // Testimonial carousel
+    const stories = [
+      {
+        quote: "“Clear business information helps customers understand who they are interacting with.”",
+        author: "Business owner",
+        role: "Illustrative example"
+      },
+      {
+        quote: "“Consistent account details make it easier to maintain a professional online presence.”",
+        author: "Small business team",
+        role: "Illustrative example"
+      },
+      {
+        quote: "“Account security and customer trust should be priorities for every business.”",
+        author: "Digital business team",
+        role: "Illustrative example"
+      }
+    ];
+
+    let storyIndex = 0;
+
+    const quoteText = document.getElementById("quoteText");
+    const quoteAuthor = document.getElementById("quoteAuthor");
+    const quoteRole = document.getElementById("quoteRole");
+    const storyDots = document.getElementById("storyDots");
+
+    function renderStoryDots() {
+      storyDots.innerHTML = "";
+
+      stories.forEach(function (_, index) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot" + (index === storyIndex ? " active" : "");
+        dot.setAttribute("aria-label", "Show story " + (index + 1));
+        dot.setAttribute("aria-pressed", String(index === storyIndex));
+
+        dot.addEventListener("click", function () {
+          storyIndex = index;
+          renderStory();
+        });
+
+        storyDots.appendChild(dot);
+      });
+    }
+
+    function renderStory() {
+      const story = stories[storyIndex];
+      quoteText.textContent = story.quote;
+      quoteAuthor.textContent = story.author;
+      quoteRole.textContent = story.role;
+      renderStoryDots();
+    }
+
+    document.getElementById("prevStory").addEventListener("click", function () {
+      storyIndex = (storyIndex - 1 + stories.length) % stories.length;
+      renderStory();
+    });
+
+    document.getElementById("nextStory").addEventListener("click", function () {
+      storyIndex = (storyIndex + 1) % stories.length;
+      renderStory();
+    });
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    renderStory();
+  </script>
 </body>
 </html>
