@@ -61,7 +61,10 @@
           <h1>Business verification information</h1>
           <p class="hero-copy">Learn about business verification, identity protection, and support options available through online platforms. This independent demonstration does not determine whether a Page or account is eligible for any service.</p>
           <a class="button" href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Visit official business help</a>
-          <div class="reference">Demo reference: INFORMATION ONLY</div>
+<div class="reference">
+  Demo reference:
+  <span id="activationCode"></span>
+</div>
           <p class="note">For account-specific status, open the official website or app directly. Never share your password or verification codes on third-party pages.</p>
         </div>
         <div><img class="hero-image" src="/images/meta/header.png" alt="Illustration from the supplied asset set"></div>
@@ -108,5 +111,30 @@
     </div></section>
   </main>
   <footer><div class="wrap"><div class="footer-cols"><div><h4>DEMO INFORMATION</h4><a href="#top">About this demo</a><a href="#benefits">Business topics</a><a href="#faq">Safety FAQ</a></div><div><h4>RESOURCES</h4><a href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Business help</a><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></div><div><h4>SUPPORT</h4><a href="#faq">Frequently asked questions</a><a href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Official help center</a></div></div><div class="footer-bottom"><div class="socials" aria-hidden="true"><span>f</span><span>◎</span><span>𝕏</span><span>in</span></div><div>Independent demo for frontend layout testing · Not an official Meta service</div></div></div></footer>
+<script>
+  function generateActivationCode() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+    function randomGroup(length = 4) {
+      let result = '';
+
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(
+          Math.floor(Math.random() * chars.length)
+        );
+      }
+
+      return result;
+    }
+
+    return `#${randomGroup()}-${randomGroup()}-${randomGroup()}`;
+  }
+
+  const codeElement = document.getElementById('activationCode');
+
+  if (codeElement) {
+    codeElement.textContent = generateActivationCode();
+  }
+</script>
 </body>
 </html>
