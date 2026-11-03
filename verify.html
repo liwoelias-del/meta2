@@ -20,7 +20,35 @@
     .stories{background:#f4f7fa;padding:72px 0 76px}.stories .section-head{margin-bottom:28px}.quote{max-width:720px;margin:auto;text-align:center;border:1px solid #dce2e8;border-radius:20px;padding:34px 42px;background:#fff;box-shadow:0 2px 5px #152b3a0a}.quote p{font-size:20px;line-height:1.7;color:#263746;margin-bottom:20px}.quote strong{font-size:14px;color:#263746}.quote .role{font-size:14px;margin:4px 0 0}.quote-controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:28px;color:#8293a1;font-size:12px}.quote-arrow{width:44px;height:44px;border:1px solid #dce2e8;border-radius:50%;background:#fff;color:#263746;display:inline-flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;box-shadow:0 1px 2px #172b3a0a;transition:background .2s,border-color .2s,transform .2s}.quote-arrow:hover{background:#f7faff;border-color:#b9cce5;transform:translateY(-1px)}.quote-arrow:focus-visible{outline:3px solid #9fc5ff;outline-offset:3px}.quote-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 2px}.dot{width:8px;height:8px;border-radius:50%;background:#c9d0d7;display:inline-block;transition:width .2s,background .2s}.dot.active{width:28px;border-radius:99px;background:#0866e8}
     .cta-section{background:linear-gradient(110deg,#fcf3fa 0%,#f3f8ff 55%,#eefaf8 100%);border-top:1px solid #e2e9f2;border-bottom:1px solid #e2e9f2;text-align:center;padding:72px 0}.cta-section h2{font-size:clamp(27px,2.5vw,36px);max-width:650px;margin:0 auto 16px}.cta-section p{font-size:17px;max-width:650px;margin:0 auto}.cta-section .button{margin:28px auto 0;width:min(100%,360px)}
     .faq-section{padding:72px 0 80px}.faq-section .section-head{margin-bottom:30px}.faq-section h2{font-size:clamp(26px,2.2vw,34px)}.faq{max-width:980px;margin:auto;border-top:1px solid #dce2e8}details{padding:18px 0;border-bottom:1px solid #dce2e8}summary{cursor:pointer;font-weight:600;font-size:15px;color:#172b3a;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}summary::-webkit-details-marker{display:none}summary:after{content:'+';display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#0866e8;background:#eaf2ff;font-size:18px;flex:0 0 28px}details[open] summary:after{content:'−'}details p{font-size:14px;margin:12px 40px 0 0;line-height:1.7}
-    footer{background:#192b35;color:#fff;padding:42px 0 26px}.footer-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-bottom:30px;border-bottom:1px solid #40505a}.footer-cols h4{font-size:12px;margin:0 0 14px;color:#fff;letter-spacing:.02em}.footer-cols a{display:block;font-size:13px;color:#d0d9df;margin:8px 0}.footer-cols a:hover{color:#fff;text-decoration:underline}.footer-bottom{text-align:center;padding-top:24px;color:#d0d9df;font-size:12px}.socials{display:flex;justify-content:center;gap:12px;margin-bottom:18px}.socials a{width:34px;height:34px;border:1px solid #52636d;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;background:#263b46}.socials a:hover{background:#344d59}.footer-bottom p{color:#d0d9df;font-size:12px;margin:5px 0}
+    footer{background:#192b35;color:#fff;padding:42px 0 26px}.footer-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding-bottom:30px;border-bottom:1px solid #40505a}.footer-cols h4{font-size:12px;margin:0 0 14px;color:#fff;letter-spacing:.02em}.footer-cols a{display:block;font-size:13px;color:#d0d9df;margin:8px 0}.footer-cols a:hover{color:#fff;text-decoration:underline}.footer-bottom{text-align:center;padding-top:24px;color:#d0d9df;font-size:12px}
+.socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.socials a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #52636d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: #fff;
+    background: #263b46;
+    transition: all 0.3s ease;
+}
+
+.socials a:hover {
+    background: #0866e8;
+    border-color: #0866e8;
+    transform: translateY(-3px);
+}
+.footer-bottom p{color:#d0d9df;font-size:12px;margin:5px 0}
     @media(max-width:800px){.benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.wrap{width:min(calc(100% - 32px),680px)}header{height:auto;min-height:62px}.nav{min-height:62px;flex-wrap:wrap;gap:14px;padding:12px 0}.logo{width:88px}nav{gap:16px;font-size:12px}.language{font-size:12px}.hero{padding:42px 0}.hero-grid{grid-template-columns:1fr;gap:32px}.mv-promo-video{max-height:520px;aspect-ratio:16/10}h1{font-size:36px}.steps{grid-template-columns:1fr}.step{min-height:0}section{padding:52px 0}.quote{padding:28px 24px}.quote p{font-size:18px}.cta-section{padding:54px 0}}
     @media(max-width:520px){.benefits-grid{grid-template-columns:1fr}.benefit-card{min-height:0;padding:22px}.wrap{width:calc(100% - 28px)}.nav{gap:12px}.logo{width:78px}nav{gap:12px;flex-wrap:wrap}.language{width:100%;margin-left:0}.hero{padding:32px 0}.badge{width:52px;height:52px}h1{font-size:32px}.hero-copy{font-size:16px}.mv-promo-video{aspect-ratio:4/3;max-height:420px}.section-head{margin-bottom:28px}.section-head p{font-size:15px}.quote{padding:24px 18px}.quote p{font-size:16px}.footer-cols{grid-template-columns:1fr 1fr;gap:22px}.footer-cols>div:last-child{grid-column:1/-1}.footer-cols h4,.footer-cols a{font-size:12px}.faq-section{padding:48px 0 56px}summary{font-size:14px}details p{margin-right:10px}}
   </style>
@@ -128,7 +156,30 @@
         <div><h4>SUPPORT</h4><a href="https://www.facebook.com/help/" target="_blank" rel="noopener noreferrer">Help Center</a><a href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Business Help</a></div>
       </div>
       <div class="footer-bottom">
-        <div class="socials" aria-label="Social links"><a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener noreferrer">f</a><a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">◎</a><a href="https://www.linkedin.com/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a></div>
+<div class="socials" aria-label="Social links">
+
+  <a href="https://www.facebook.com/"
+     aria-label="Facebook"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.instagram.com/"
+     aria-label="Instagram"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://www.linkedin.com/"
+     aria-label="LinkedIn"
+     target="_blank"
+     rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in"></i>
+  </a>
+
+</div>
         <p>Independent demonstration page. Not affiliated with, sponsored by, or endorsed by Meta.</p>
         <p>© 2026 — Demo information page</p>
       </div>
