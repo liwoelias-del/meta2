@@ -62,7 +62,7 @@
   <header>
     <div class="wrap nav">
       <a href="#top" aria-label="Demo home"><img class="logo" src="public/images/logo-meta.svg" alt="Logo asset supplied for this demo"></a>
-      <nav aria-label="Page navigation"><a href="#benefits">Overview</a><a href="#steps">Steps</a><a href="#stories">Feedback</a><a href="#faq">FAQ</a></nav>
+      <nav aria-label="Page navigation"><a href="#benefits">Benefits</a><a href="#steps">Steps</a><a href="#stories">Stories</a><a href="#faq">FAQ</a></nav>
       <div class="language" aria-label="Language">◎ English (US)</div>
     </div>
   </header>
@@ -120,14 +120,30 @@
           <strong id="quoteAuthor">Independent demo statement</strong>
           <p class="role" id="quoteRole">Illustrative text — not a customer testimonial or endorsement.</p>
         </div>
-        <div class="quote-controls" aria-label="Feedback carousel controls">
-          <div class="quote-dots" id="quoteDots" aria-label="Choose feedback item">
-            <button class="dot active" type="button" aria-label="Show item 1" data-slide="0"></button>
-            <button class="dot" type="button" aria-label="Show item 2" data-slide="1"></button>
-            <button class="dot" type="button" aria-label="Show item 3" data-slide="2"></button>
-          </div>
-        </div>
-      </div>
+
+<div class="quote-controls" aria-label="Feedback carousel controls">
+
+    <!-- Nút Previous -->
+    <button class="quote-arrow" type="button"
+            id="quotePrev" aria-label="Previous review">
+        <img src="public/icons/ic_left.svg" alt="">
+    </button>
+
+    <!-- Các dấu chấm -->
+    <div class="quote-dots" id="quoteDots" aria-label="Choose feedback item">
+        <button class="dot active" type="button" aria-label="Show item 1" data-slide="0"></button>
+        <button class="dot" type="button" aria-label="Show item 2" data-slide="1"></button>
+        <button class="dot" type="button" aria-label="Show item 3" data-slide="2"></button>
+    </div>
+
+    <!-- Nút Next -->
+    <button class="quote-arrow" type="button"
+            id="quoteNext" aria-label="Next review">
+        <img src="public/icons/ic_right.svg" alt="">
+    </button>
+
+</div>
+
     </section>
 
     <section class="cta-section">
