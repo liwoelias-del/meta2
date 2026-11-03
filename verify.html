@@ -10,6 +10,42 @@
   <link rel="stylesheet" href="/_next/static/css/20206704e3630dfe.css">
   <link rel="stylesheet" href="/_next/static/css/7bac64abccbdbff3.css">
   <style>
+    .hero-media {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mv-promo-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #fff;
+  border: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media {
+    width: 100%;
+  }
+}
     :root{font-family:Arial,Helvetica,sans-serif;color:#172b3a;background:#fff;font-synthesis:none;text-rendering:optimizeLegibility}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;line-height:1.55;font-size:16px}a{color:inherit;text-decoration:none}
     .demo-banner{padding:8px 16px;text-align:center;background:#fff4d6;color:#634b00;font-size:12px;border-bottom:1px solid #ead7a0}
@@ -68,7 +104,7 @@
         </div>
 <video
   class="mv-promo-video"
-  src="/images/video%2012.mp4"
+  src="public/images/video12.mp4"
   muted
   autoplay
   loop
