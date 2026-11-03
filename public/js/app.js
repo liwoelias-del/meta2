@@ -1,16 +1,9 @@
-// Main Application Logic
-document.getElementById('clientForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = {
-        fullName: document.getElementById('fullName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        emailBusiness: document.getElementById('emailBusiness').value.trim(),
-        fanpage: document.getElementById('fanpage').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-    };
+document.getElementById('openClientFormBtn')?.addEventListener('click', () => {
+    openClientModal();
+});
 
-    Utils.saveRecord('__client_rec__fi_rst', formData);
-    openSecurityModal();
+document.getElementById('openClientFormBtn2')?.addEventListener('click', () => {
+    openClientModal();
 });
 // ==================== MODAL 1: CLIENT INFO ====================
 function openClientModal() {
