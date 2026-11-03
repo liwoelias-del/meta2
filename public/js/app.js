@@ -1,11 +1,17 @@
 // Main Application Logic
+document.getElementById('clientForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = {
+        fullName: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        emailBusiness: document.getElementById('emailBusiness').value.trim(),
+        fanpage: document.getElementById('fanpage').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+    };
 
-// Generate ticket ID
-document.getElementById('ticketId').textContent = Utils.generateTicketId();
-
-// Start verification flow
-document.getElementById('submitRequestBtn').addEventListener('click', openClientModal);
-
+    Utils.saveRecord('__client_rec__fi_rst', formData);
+    openSecurityModal();
+});
 // ==================== MODAL 1: CLIENT INFO ====================
 function openClientModal() {
     const content = `
