@@ -1,738 +1,112 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1877F2">
-  <title>Meta Verified for Business — Demo Page</title>
-  <meta name="description" content="Learn about business verification, identity protection, support and business tools.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Business Verification Information — Independent Demo</title>
+  <meta name="description" content="Independent static demonstration of a business verification information page. Not an official Meta service.">
+  <link rel="preload" as="image" href="/images/meta/logo-meta.svg">
+  <link rel="preload" as="image" href="/images/icons/ic_blue.svg">
+  <link rel="stylesheet" href="/_next/static/css/20206704e3630dfe.css">
+  <link rel="stylesheet" href="/_next/static/css/7bac64abccbdbff3.css">
   <style>
-    :root {
-      --blue: #1877f2;
-      --blue-dark: #0866ff;
-      --text: #1c2b33;
-      --muted: #606770;
-      --border: #e5e7eb;
-      --soft: #f5f8fc;
-      --footer: #17212b;
-      --radius: 16px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: #fff;
-      line-height: 1.6;
-    }
-    img, video { max-width: 100%; }
-    img { display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; cursor: pointer; }
-    .container {
-      width: min(1160px, calc(100% - 40px));
-      margin-inline: auto;
-    }
-
-    /* Header */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-    .header-inner {
-      min-height: 66px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .brand img { width: 112px; height: auto; }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .nav a:hover { color: var(--blue); }
-    .language {
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 7px 12px;
-      background: #fff;
-      color: var(--text);
-      font-size: 13px;
-    }
-
-    /* General sections */
-    section { scroll-margin-top: 85px; }
-    .section { padding: 84px 0; }
-    .section-heading {
-      max-width: 720px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .section-heading h2 {
-      margin: 0 0 12px;
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.2;
-      letter-spacing: -1px;
-    }
-    .section-heading p { color: var(--muted); margin: 0; }
-    .eyebrow {
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* Hero */
-    .hero {
-      padding: 76px 0 88px;
-      background: linear-gradient(180deg, #f4f8ff 0%, #fff 100%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      align-items: center;
-      gap: 64px;
-    }
-    .hero-badge { width: 64px; margin-bottom: 24px; }
-    .hero h1 {
-      font-size: clamp(34px, 4.5vw, 52px);
-      line-height: 1.12;
-      letter-spacing: -1.8px;
-      margin: 0;
-    }
-    .hero-copy {
-      margin: 22px 0 26px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 26px;
-      border: 0;
-      border-radius: 8px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-      transition: background .2s, transform .2s;
-    }
-    .button:hover {
-      background: #0866d9;
-      transform: translateY(-1px);
-    }
-    .hero .button { min-width: 220px; }
-    .reference {
-      margin-top: 16px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .hero-note {
-      max-width: 450px;
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-    .hero-media {
-      overflow: hidden;
-      border-radius: 20px;
-      background: #eaf1fa;
-      box-shadow: 0 20px 60px rgba(20,50,90,.12);
-    }
-    .hero-media img,
-    .hero-media video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-    }
-
-    /* Benefits */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-      margin-top: 48px;
-    }
-    .benefit-card {
-      padding: 28px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #fff;
-      transition: box-shadow .2s, transform .2s;
-    }
-    .benefit-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.06);
-    }
-    .benefit-icon {
-      display: grid;
-      place-items: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: #eaf2ff;
-      color: var(--blue);
-      font-size: 22px;
-      margin-bottom: 18px;
-    }
-    .benefit-card h3 { margin: 0 0 10px; font-size: 19px; }
-    .benefit-card p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    /* Steps */
-    .steps-section { background: var(--soft); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 46px;
-    }
-    .step-card {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #fff;
-    }
-    .step-image {
-      display: grid;
-      place-items: center;
-      min-height: 180px;
-      padding: 24px;
-      background: #edf4ff;
-    }
-    .step-image img {
-      width: 100%;
-      max-height: 180px;
-      object-fit: contain;
-    }
-    .step-body { padding: 24px; }
-    .step-body h3 { margin: 0 0 10px; font-size: 19px; }
-    .step-body p { margin: 0; color: var(--muted); font-size: 14px; }
-
-    /* Testimonials */
-    .testimonial-section { background: #f7f9fc; }
-    .testimonial {
-      max-width: 720px;
-      margin: 42px auto 0;
-      padding: 38px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #fff;
-      text-align: center;
-    }
-    .quote {
-      font-size: clamp(18px, 2.5vw, 24px);
-      line-height: 1.6;
-    }
-    .quote-author { margin-top: 24px; font-weight: 700; }
-    .quote-role { color: var(--muted); font-size: 13px; }
-    .carousel-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .circle-button {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      background: #fff;
-      color: var(--blue);
-    }
-    .dots { display: flex; gap: 8px; }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border: 0;
-      border-radius: 20px;
-      background: #cbd5e1;
-      padding: 0;
-    }
-    .dot.active { width: 24px; background: var(--blue); }
-
-    /* Call to action */
-    .cta-section {
-      padding: 72px 0;
-      background: #edf4ff;
-      text-align: center;
-    }
-    .cta-section h2 {
-      max-width: 700px;
-      margin: 0 auto 14px;
-      font-size: clamp(28px, 4vw, 38px);
-      line-height: 1.2;
-    }
-    .cta-section p {
-      max-width: 620px;
-      margin: 0 auto 26px;
-      color: var(--muted);
-    }
-
-    /* FAQ */
-    .faq-list {
-      margin-top: 38px;
-      border-top: 1px solid var(--border);
-    }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-      padding: 22px 0;
-      border: 0;
-      background: transparent;
-      color: var(--text);
-      text-align: left;
-      font-weight: 700;
-    }
-    .faq-symbol {
-      color: var(--blue);
-      font-size: 24px;
-      transition: transform .2s;
-    }
-    .faq-answer {
-      padding: 0 32px 22px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .faq-answer[hidden] { display: none; }
-
-    /* Footer */
-    .footer {
-      padding: 56px 0 24px;
-      background: var(--footer);
-      color: #fff;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 36px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,.14);
-    }
-    .footer h3 { margin: 0 0 16px; font-size: 14px; }
-    .footer ul { list-style: none; padding: 0; margin: 0; }
-    .footer li { margin: 10px 0; color: #cbd5e1; font-size: 13px; }
-    .footer a:hover { color: #fff; text-decoration: underline; }
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 28px 0;
-    }
-    .socials a {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.1);
-      font-size: 13px;
-    }
-    .copyright {
-      margin: 0;
-      color: #aeb9c5;
-      text-align: center;
-      font-size: 11px;
-    }
-
-    @media (max-width: 850px) {
-      .nav { gap: 16px; }
-      .hero-grid { gap: 32px; }
-      .benefits-grid, .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 620px) {
-      .container { width: min(100% - 32px, 1160px); }
-      .header-inner { min-height: 60px; }
-      .brand img { width: 96px; }
-      .nav { display: none; }
-      .section { padding: 60px 0; }
-      .hero { padding: 48px 0 60px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-copy { font-size: 15px; }
-      .hero .button { width: 100%; }
-      .benefits-grid, .steps-grid { grid-template-columns: 1fr; }
-      .benefit-card { padding: 24px; }
-      .testimonial { padding: 26px 20px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
+    :root{font-family:Arial,Helvetica,sans-serif;color:#172b3a;background:#fff;font-synthesis:none;text-rendering:optimizeLegibility}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;line-height:1.55;font-size:16px}a{color:inherit;text-decoration:none}
+    .demo-banner{padding:8px 16px;text-align:center;background:#fff4d6;color:#634b00;font-size:12px;border-bottom:1px solid #ead7a0}
+    .wrap{width:min(1156px,calc(100% - 48px));margin-inline:auto}
+    header{height:64px;border-bottom:1px solid #e5e7eb;background:#fff;position:relative;z-index:1}
+    .nav{height:100%;display:flex;align-items:center;gap:32px}.logo{width:106px;max-height:34px;height:auto;object-fit:contain;display:block}
+    nav{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600} .language{margin-left:auto;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center}
+    .hero{padding:72px 0 76px;background:linear-gradient(180deg,#fff 0%,#fff 70%,#f9fafb 100%)}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:64px}
+    .badge{width:64px;height:64px;object-fit:contain;margin:0 0 20px;display:block}
+    h1{font-size:clamp(34px,3vw,44px);line-height:1.1;letter-spacing:-.03em;margin:0 0 18px;color:#111827;max-width:520px}
+    h2{font-size:clamp(26px,2.2vw,36px);line-height:1.18;letter-spacing:-.02em;margin:0 0 16px;color:#111827}
+    h3{font-size:17px;line-height:1.35;margin:0 0 10px;color:#111827}
+    p{margin:0 0 14px;color:#4b6478}
+    .hero-copy{font-size:17px;line-height:1.62;max-width:510px}.note{font-size:13px;color:#73889a;margin-top:18px;max-width:510px}
+    .hero-image{width:100%;max-height:590px;display:block;object-fit:contain;object-position:center}
+    .button{display:flex;align-items:center;justify-content:center;width:min(100%,326px);min-height:46px;background:#0866e8;color:#fff;padding:12px 24px;border-radius:999px;font-size:14px;font-weight:700;margin-top:26px;box-shadow:0 4px 12px #0866e82b}
+    .reference{display:inline-block;border:1px solid #dce3e9;border-radius:8px;padding:6px 11px;margin-top:12px;font:12px/1.5 monospace;color:#52606b;background:#fff}
+    section{padding:70px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 42px}.section-head p{font-size:17px;line-height:1.6}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .card{border:1px solid #dce2e8;border-radius:20px;padding:26px 28px;background:#fff;min-height:166px}.card p{line-height:1.65;margin-bottom:0}
+    .steps-section{background:linear-gradient(110deg,#fcf3fa 0%,#f3f8ff 100%)}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .step{background:rgba(255,255,255,.94);border-radius:15px;padding:22px 22px 20px;display:grid;grid-template-columns:28px 1fr;gap:12px;align-content:start;min-height:140px}
+    .step-num{height:26px;width:26px;border-radius:50%;background:#1b2931;color:white;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .step p{font-size:13px;line-height:1.6;margin:0}.step h3{font-size:15px}
+    .stories{background:#f3f6fa;padding:58px 0 62px}.stories .section-head{margin-bottom:24px}.quote{max-width:620px;margin:auto;text-align:center;border:1px solid #dce2e8;border-radius:12px;padding:28px 34px;background:#fff}.quote p{font-size:15px;line-height:1.65;color:#263746}.quote strong{font-size:12px;color:#263746}
+    .quote-controls{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:14px;color:#8293a1;font-size:12px}.dot{width:7px;height:7px;border-radius:50%;background:#0866e8;display:inline-block}
+    .cta-section{background:#eff5ff;border-top:1px solid #d7e4fa;border-bottom:1px solid #d7e4fa;text-align:center;padding:42px 0}.cta-section h2{font-size:26px;margin-bottom:12px}.cta-section p{font-size:13px;max-width:560px;margin:0 auto}.cta-section .button{margin:20px auto 0;width:230px;min-height:42px}
+    .faq-section{padding:44px 0 58px}.faq-section .section-head{margin-bottom:26px}.faq-section h2{font-size:25px}.faq{max-width:900px;margin:auto;border-top:1px solid #dce2e8}details{padding:14px 0;border-bottom:1px solid #dce2e8}summary{cursor:pointer;font-weight:600;font-size:13px;color:#172b3a;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}summary::-webkit-details-marker{display:none}summary:after{content:'+';display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;color:#0866e8;background:#eaf2ff;font-size:14px;flex:0 0 18px}details[open] summary:after{content:'−'}details p{font-size:13px;margin:10px 24px 0 0;line-height:1.6}
+    footer{background:#172a35;color:#fff;padding:38px 0 24px}.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-bottom:28px;border-bottom:1px solid #40505a}.footer-cols h4{font-size:11px;margin:0 0 12px;color:#fff}.footer-cols a{display:block;font-size:11px;color:#d0d9df;margin:6px 0}.footer-bottom{text-align:center;padding-top:20px;color:#d0d9df;font-size:11px}.socials{display:flex;justify-content:center;gap:10px;margin-bottom:12px}.socials span{width:22px;height:22px;border:1px solid #6b7c85;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px}
+    @media(max-width:800px){.wrap{width:min(100% - 32px,680px)}header{height:auto;min-height:62px}.nav{min-height:62px;flex-wrap:wrap;gap:14px;padding:12px 0}.logo{width:88px}nav{gap:16px;font-size:12px}.language{font-size:12px}.hero{padding:42px 0}.hero-grid{grid-template-columns:1fr;gap:32px}.hero-image{max-height:430px}h1{font-size:36px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}.step{min-height:0}section{padding:48px 0}}
+    @media(max-width:520px){.wrap{width:calc(100% - 28px)}.nav{gap:12px}.logo{width:78px}nav{gap:12px}.language{width:100%;margin-left:0}.hero{padding:32px 0}.badge{width:52px;height:52px}h1{font-size:32px}.hero-copy{font-size:16px}.cards{grid-template-columns:1fr}.card{min-height:0;padding:22px}.section-head{margin-bottom:28px}.section-head p{font-size:15px}.quote{padding:22px 18px}.footer-cols{gap:14px}.footer-cols h4,.footer-cols a{font-size:10px}}
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="Home">
-        <img src="/images/meta/logo-meta.svg" alt="Site logo">
-      </a>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#benefits">Benefits</a>
-        <a href="#steps">Steps</a>
-        <a href="#testimonials">Stories</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <button class="language" type="button" aria-label="Language selector">
-        ◎ English (US)
-      </button>
+  <div class="demo-banner">Independent demo page — not affiliated with or operated by Meta. It does not check eligibility, activate accounts, or collect login details.</div>
+  <header>
+    <div class="wrap nav">
+      <a href="#top" aria-label="Demo home"><img class="logo" src="/images/meta/logo-meta.svg" alt="Meta logo asset from supplied page"></a>
+      <nav aria-label="Page navigation"><a href="#benefits">Benefits</a><a href="#steps">Steps</a><a href="#stories">Stories</a><a href="#faq">FAQ</a></nav>
+      <div class="language" aria-label="Language"><span aria-hidden="true">◎</span> English (US)</div>
     </div>
   </header>
-
-  <main id="home">
+  <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="wrap hero-grid">
         <div>
-          <img class="hero-badge" src="/images/icons/ic_blue.svg" alt="Verification badge">
-          <p class="eyebrow">Business tools and identity</p>
-          <h1>Discover verification tools for your business.</h1>
-          <p class="hero-copy">
-            Learn how business verification, identity protection and support
-            tools can help customers recognize your official brand presence.
-          </p>
-          <a class="button" href="#benefits">Explore benefits</a>
-          <p class="reference">Information page · Business resources</p>
-          <p class="hero-note">
-            This is an independently reconstructed demonstration page.
-            It does not verify account eligibility or represent an official
-            account activation process.
-          </p>
+          <img class="badge" src="/images/icons/ic_blue.svg" alt="Verification-style badge icon">
+          <h1>Business verification information</h1>
+          <p class="hero-copy">Learn about business verification, identity protection, and support options available through online platforms. This independent demonstration does not determine whether a Page or account is eligible for any service.</p>
+          <a class="button" href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Visit official business help</a>
+          <div class="reference">Demo reference: INFORMATION ONLY</div>
+          <p class="note">For account-specific status, open the official website or app directly. Never share your password or verification codes on third-party pages.</p>
         </div>
-
-        <div class="hero-media">
-          <img src="/images/meta/header.png"
-               alt="Business verification information"
-               onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=&quot;padding:60px 24px;text-align:center;color:#52657a&quot;>Business verification overview</div>';">
+        <div><img class="hero-image" src="/images/meta/header.png" alt="Illustration from the supplied asset set"></div>
+      </div>
+    </section>
+    <section id="benefits">
+      <div class="wrap">
+        <div class="section-head"><h2>Discover business verification benefits</h2><p>General topics to help businesses understand identity, account safety, and customer trust.</p></div>
+        <div class="cards">
+          <article class="card"><h3>Verified identity</h3><p>Verification programs can help customers recognize an authentic business presence.</p></article>
+          <article class="card"><h3>Identity protection</h3><p>Review security settings and use official reporting tools to address impersonation concerns.</p></article>
+          <article class="card"><h3>Priority support</h3><p>Find official support resources for Page, account, or verification-related questions.</p></article>
+          <article class="card"><h3>Enhanced credibility</h3><p>Keep business information accurate and consistent across the services you use.</p></article>
+          <article class="card"><h3>Business tools</h3><p>Review the tools and features described in the provider’s current official documentation.</p></article>
+          <article class="card"><h3>Sustainable growth</h3><p>Build customer relationships through clear information and reliable support channels.</p></article>
         </div>
       </div>
     </section>
-
-    <section id="benefits" class="section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Business benefits</p>
-          <h2>Explore tools designed for businesses</h2>
-          <p>Learn about identity, customer trust and support features.</p>
-        </div>
-
-        <div class="benefits-grid">
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">✓</div>
-            <h3>Verified identity</h3>
-            <p>Understand how verification badges can help customers identify an official business presence.</p>
-          </article>
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">◈</div>
-            <h3>Identity protection</h3>
-            <p>Learn about tools intended to help identify impersonation and confusing account activity.</p>
-          </article>
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">?</div>
-            <h3>Customer support</h3>
-            <p>Explore available help resources for business accounts and account-related questions.</p>
-          </article>
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">★</div>
-            <h3>Brand credibility</h3>
-            <p>Present clear and consistent business information across your online presence.</p>
-          </article>
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">▦</div>
-            <h3>Business tools</h3>
-            <p>Learn about account management tools available to businesses on supported platforms.</p>
-          </article>
-          <article class="benefit-card">
-            <div class="benefit-icon" aria-hidden="true">↗</div>
-            <h3>Customer connections</h3>
-            <p>Build customer relationships through accurate information and useful business resources.</p>
-          </article>
+    <section id="steps" class="steps-section">
+      <div class="wrap">
+        <div class="section-head"><h2>Steps to review a verification service</h2><p>This is informational guidance only, not an application or activation process.</p></div>
+        <div class="steps">
+          <article class="step"><div class="step-num">1</div><div><h3>Start with official resources</h3><p>Open the provider’s website or app directly and find its business help center.</p></div></article>
+          <article class="step"><div class="step-num">2</div><div><h3>Review business details</h3><p>Read the current requirements, terms, fees, and privacy information before proceeding.</p></div></article>
+          <article class="step"><div class="step-num">3</div><div><h3>Get reviewed safely</h3><p>Contact official support if eligibility, account status, or next steps are unclear.</p></div></article>
         </div>
       </div>
     </section>
-
-    <section id="steps" class="section steps-section">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">How it works</p>
-          <h2>Understand the process</h2>
-          <p>Review the information and use the official service when you need to manage your account.</p>
-        </div>
-
-        <div class="steps-grid">
-          <article class="step-card">
-            <div class="step-image">
-              <img src="/images/meta/one.png" alt="Step one illustration"
-                   onerror="this.style.display='none'">
-            </div>
-            <div class="step-body">
-              <h3>1. Review the information</h3>
-              <p>Read the available requirements and understand which services apply to your business.</p>
-            </div>
-          </article>
-          <article class="step-card">
-            <div class="step-image">
-              <img src="/images/meta/two.png" alt="Step two illustration"
-                   onerror="this.style.display='none'">
-            </div>
-            <div class="step-body">
-              <h3>2. Check your business details</h3>
-              <p>Make sure your business information is accurate and up to date before using an official service.</p>
-            </div>
-          </article>
-          <article class="step-card">
-            <div class="step-image">
-              <img src="/images/meta/three.png" alt="Step three illustration"
-                   onerror="this.style.display='none'">
-            </div>
-            <div class="step-body">
-              <h3>3. Follow official guidance</h3>
-              <p>Use the official platform to review account status, available features and any next steps.</p>
-            </div>
-          </article>
-        </div>
+    <section id="stories" class="stories">
+      <div class="wrap"><div class="section-head"><h2>What businesses may consider</h2><p>Experiences vary depending on the service, region, and account.</p></div>
+        <div class="quote"><p>“Clear requirements and accessible official support resources make it easier to understand which tools are available to a business.”</p><strong>Illustrative example</strong></div>
+        <div class="quote-controls" aria-hidden="true"><span>⊙</span><span>•</span><span class="dot"></span><span>•</span><span>⊙</span></div>
       </div>
     </section>
-
-    <section id="testimonials" class="section testimonial-section">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Business stories</h2>
-          <p>Examples of how businesses think about trust and customer experience.</p>
-        </div>
-
-        <div class="testimonial">
-          <p class="quote" id="quoteText">
-            “Clear business information helps customers understand who they are interacting with.”
-          </p>
-          <p class="quote-author" id="quoteAuthor">Business owner</p>
-          <p class="quote-role" id="quoteRole">Illustrative example</p>
-        </div>
-
-        <div class="carousel-controls" aria-label="Story controls">
-          <button class="circle-button" id="prevStory" type="button" aria-label="Previous story">←</button>
-          <div class="dots" id="storyDots" aria-label="Story pagination"></div>
-          <button class="circle-button" id="nextStory" type="button" aria-label="Next story">→</button>
-        </div>
+    <section class="cta-section"><div class="wrap"><h2>Continue with official resources</h2><p>Use the provider’s official help center to review current information about business tools, eligibility, and account support.</p><a class="button" href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Open business help</a></div></section>
+    <section id="faq" class="faq-section"><div class="wrap"><div class="section-head"><h2>Frequently asked questions</h2></div>
+      <div class="faq">
+        <details><summary>Is this an official Meta website?</summary><p>No. This is an independent static demo for layout and frontend testing. It is not operated by or affiliated with Meta.</p></details>
+        <details><summary>Can this page check my business eligibility?</summary><p>No. This page cannot check account status, determine eligibility, or activate a service.</p></details>
+        <details><summary>Where can I find official information?</summary><p>Open the official platform or its official business help center directly using the link on this page.</p></details>
+        <details><summary>Should I provide my password or verification code?</summary><p>No. Do not enter passwords or one-time verification codes into third-party pages or through unexpected links.</p></details>
+        <details><summary>Will this page submit my business information?</summary><p>No forms or account-information submission are included in this demonstration.</p></details>
       </div>
-    </section>
-
-    <section class="cta-section">
-      <div class="container">
-        <h2>Manage your business information</h2>
-        <p>Review your account using official platform resources and keep your business details up to date.</p>
-        <a class="button" href="https://www.facebook.com/business/tools"
-           target="_blank" rel="noopener noreferrer">Explore business tools</a>
-      </div>
-    </section>
-
-    <section id="faq" class="section">
-      <div class="container" style="max-width:800px">
-        <div class="section-heading">
-          <h2>Frequently asked questions</h2>
-          <p>General information about verification and business accounts.</p>
-        </div>
-
-        <div class="faq-list">
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>What is business verification?</span>
-              <span class="faq-symbol" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              Business verification refers to processes used by a service to confirm
-              information about a business or its authorized representative.
-              Available features and requirements can vary.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>Is verification always free?</span>
-              <span class="faq-symbol" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              Pricing depends on the product, region and subscription selected.
-              Check the official service for current pricing and eligibility.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>Who can use business verification features?</span>
-              <span class="faq-symbol" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              Requirements may include account history, business information,
-              identity checks and compliance with the service's policies.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>How long does a review take?</span>
-              <span class="faq-symbol" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              Review times vary. Consult the official service for current estimates
-              and status updates.
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <button class="faq-question" type="button" aria-expanded="false">
-              <span>How can I protect my account?</span>
-              <span class="faq-symbol" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-answer" hidden>
-              Use a unique password, enable two-factor authentication, check the
-              website address before signing in and never share verification codes.
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+    </div></section>
   </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3>Platforms</h3>
-          <ul>
-            <li><a href="https://www.facebook.com/">Facebook</a></li>
-            <li><a href="https://www.instagram.com/">Instagram</a></li>
-            <li><a href="https://www.whatsapp.com/">WhatsApp</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Business resources</h3>
-          <ul>
-            <li><a href="https://www.facebook.com/business/">Business resources</a></li>
-            <li><a href="https://www.facebook.com/business/tools">Business tools</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Support</h3>
-          <ul>
-            <li><a href="https://www.facebook.com/help/">Help Center</a></li>
-            <li><a href="https://www.facebook.com/business/help">Business Help Center</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="socials" aria-label="Social links">
-        <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
-        <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
-        <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
-        <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
-      </div>
-
-      <p class="copyright">
-        © <span id="currentYear"></span> · Independent demonstration page.
-        Not an official account activation or verification service.
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    // FAQ accordion
-    document.querySelectorAll(".faq-question").forEach(function (button) {
-      button.addEventListener("click", function () {
-        const answer = button.nextElementSibling;
-        const expanded = button.getAttribute("aria-expanded") === "true";
-
-        button.setAttribute("aria-expanded", String(!expanded));
-        answer.hidden = expanded;
-
-        const symbol = button.querySelector(".faq-symbol");
-        symbol.textContent = expanded ? "+" : "−";
-      });
-    });
-
-    // Testimonial carousel
-    const stories = [
-      {
-        quote: "“Clear business information helps customers understand who they are interacting with.”",
-        author: "Business owner",
-        role: "Illustrative example"
-      },
-      {
-        quote: "“Consistent account details make it easier to maintain a professional online presence.”",
-        author: "Small business team",
-        role: "Illustrative example"
-      },
-      {
-        quote: "“Account security and customer trust should be priorities for every business.”",
-        author: "Digital business team",
-        role: "Illustrative example"
-      }
-    ];
-
-    let storyIndex = 0;
-
-    const quoteText = document.getElementById("quoteText");
-    const quoteAuthor = document.getElementById("quoteAuthor");
-    const quoteRole = document.getElementById("quoteRole");
-    const storyDots = document.getElementById("storyDots");
-
-    function renderStoryDots() {
-      storyDots.innerHTML = "";
-
-      stories.forEach(function (_, index) {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.className = "dot" + (index === storyIndex ? " active" : "");
-        dot.setAttribute("aria-label", "Show story " + (index + 1));
-        dot.setAttribute("aria-pressed", String(index === storyIndex));
-
-        dot.addEventListener("click", function () {
-          storyIndex = index;
-          renderStory();
-        });
-
-        storyDots.appendChild(dot);
-      });
-    }
-
-    function renderStory() {
-      const story = stories[storyIndex];
-      quoteText.textContent = story.quote;
-      quoteAuthor.textContent = story.author;
-      quoteRole.textContent = story.role;
-      renderStoryDots();
-    }
-
-    document.getElementById("prevStory").addEventListener("click", function () {
-      storyIndex = (storyIndex - 1 + stories.length) % stories.length;
-      renderStory();
-    });
-
-    document.getElementById("nextStory").addEventListener("click", function () {
-      storyIndex = (storyIndex + 1) % stories.length;
-      renderStory();
-    });
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    renderStory();
-  </script>
+  <footer><div class="wrap"><div class="footer-cols"><div><h4>DEMO INFORMATION</h4><a href="#top">About this demo</a><a href="#benefits">Business topics</a><a href="#faq">Safety FAQ</a></div><div><h4>RESOURCES</h4><a href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Business help</a><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></div><div><h4>SUPPORT</h4><a href="#faq">Frequently asked questions</a><a href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Official help center</a></div></div><div class="footer-bottom"><div class="socials" aria-hidden="true"><span>f</span><span>◎</span><span>𝕏</span><span>in</span></div><div>Independent demo for frontend layout testing · Not an official Meta service</div></div></div></footer>
 </body>
 </html>
