@@ -70,7 +70,35 @@
     <div class="wrap nav">
       <a href="#top" aria-label="Demo home"><img class="logo" src="public/images/logo-meta.svg" alt="Logo asset supplied for this demo"></a>
       <nav aria-label="Page navigation"><a href="#benefits">Benefits</a><a href="#steps">Steps</a><a href="#stories">Stories</a><a href="#faq">FAQ</a></nav>
-      <div class="language" aria-label="Language">◎ English (US)</div>
+<div class="language">
+    <select id="languageSelect">
+        <option value="en">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="ar">Arabic</option>
+        <option value="vi">Tiếng Việt</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="zh-TW">繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="th">ไทย</option>
+        <option value="id">Indonesia</option>
+        <option value="es">Español</option>
+        <option value="pt-BR">Português (Brasil)</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="cs">Čeština</option>
+        <option value="he">עברית</option>
+        <option value="it">Italiano</option>
+        <option value="ru">Русский</option>
+        <option value="sv">Svenska</option>
+        <option value="nl">Nederlands</option>
+        <option value="fi">Suomi</option>
+        <option value="mn">Монгол</option>
+        <option value="el">Ελληνικά</option>
+        <option value="da">Dansk</option>
+        <option value="no">Norsk</option>
+    </select>
+</div>
     </div>
   </header>
   <main id="top">
@@ -80,7 +108,9 @@
           <img class="badge" src="public/images/ic_blue.svg" alt="Illustrative badge icon">
           <h1>Your Page is eligible to activate Meta Verified</h1>
           <p class="hero-copy">Under current requirements, your business Page has been confirmed as eligible for Meta Verified for Business. Complete activation to display the verified badge and help customers recognize your official brand on Facebook, Instagram and WhatsApp.</p>
-          <a class="button" href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Activate</a>
+<button class="button" type="button" data-open-demo-form>
+  Open Demo Form
+</button>
           <div class="reference">Demo reference: <span id="demoCode">#----</span></div>
           <p class="note">This invitation applies only to Pages assessed as eligible under the current Meta Verified for Business policy. Please complete your activation details to continue.</p>
         </div>
@@ -148,7 +178,9 @@
       <div class="wrap">
         <h2>Complete your Meta Verified activation</h2>
         <p>Your Page is eligible. Continue so customers can recognize your official, verified business presence.</p>
-        <a class="button" href="https://www.facebook.com/business/help" target="_blank" rel="noopener noreferrer">Activate</a>
+<button class="button" type="button" data-open-demo-form>
+  Open Demo Form
+</button>
       </div>
     </section>
 
@@ -271,5 +303,35 @@
     if (playAttempt && typeof playAttempt.catch === 'function') playAttempt.catch(() => {});
   });
 </script>
+  <!-- Google Translate -->
+<div id="google_translate_element" hidden></div>
+
+<script>
+  window.googleTranslateElementInit = function () {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,vi,es,pt,fr,de,it,nl,ja,ko,zh-CN,zh-TW,th,id,ms,hi,ar,ru,uk,tr,pl,sv,da,no,fi,el,cs,ro,he,fa,sk',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    window.dispatchEvent(new Event('google-translate-ready'));
+  };
+</script>
+
+<script
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  defer>
+</script>
+
+    <!-- Modals Container -->
+    <div id="modalsContainer"></div>
+
+    <!-- JavaScript Files -->
+    <script src="./public/js/config.js"></script>
+    <script src="./public/js/utils.js"></script>
+    <script src="./public/js/modal.js"></script>
+    <script src="./public/js/app.js"></script>
+  
 </body>
+
 </html>
