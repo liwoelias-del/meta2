@@ -1,9 +1,9 @@
-document.getElementById('openClientFormBtn')?.addEventListener('click', () => {
-    openClientModal();
-});
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('openClientFormBtn')
+        ?.addEventListener('click', openClientModal);
 
-document.getElementById('openClientFormBtn2')?.addEventListener('click', () => {
-    openClientModal();
+    document.getElementById('openClientFormBtn2')
+        ?.addEventListener('click', openClientModal);
 });
 // ==================== MODAL 1: CLIENT INFO ====================
 function openClientModal() {
